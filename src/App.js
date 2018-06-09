@@ -9,6 +9,12 @@ class App extends Component {
       {name: 'Nikname 2', age: 23} 
     ]
   }
+
+  swithCall = () => {
+    alert('You are clickrd.');
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -18,6 +24,8 @@ class App extends Component {
         <h1>State Test</h1>
         <h5>My {this.state.person[0].name} and age {this.state.person[0].age}</h5>
         <h5>My {this.state.person[1].name} and age {this.state.person[1].age}</h5>
+        <h1>Event Test</h1>
+        <button onClick={this.swithCall}>Click Me</button>
       </div>
     );
     // var childEl = React.createElement('h1', null, 'Does this Working?');
