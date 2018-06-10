@@ -7,7 +7,8 @@ class App extends Component {
     person: [
       { name: 'Nikname 1', age: 22 },
       { name: 'Nikname 2', age: 23 }
-    ]
+    ],
+    personStatus: false
   }
 
   swithCall = (name) => {
@@ -30,18 +31,36 @@ class App extends Component {
     });
   }
 
+  personStatusToggle = () => {
+    var personStatus = this.state.personStatus;
+    this.setState({
+      personStatus: !personStatus
+    });
+  }
+
 
   render() {
+    let conText = null;
+    if(this.state.personStatus){
+      conText = ( <h4>Condetion Text</h4> )
+    }
     return (
       <div className="App">
         <h1>Does this Working?</h1>
-        <Person name="Palash" click={() => this.swithCall('name Vergil')} />
-        <Person name="Palash" change={this.nameChange}>This is Child </Person>
-        <h1>State Test</h1>
-        <h5>My {this.state.person[0].name} and age {this.state.person[0].age}</h5>
-        <h5>My {this.state.person[1].name} and age {this.state.person[1].age}</h5>
-        <h1>Event Test</h1>
-        <button onClick={this.swithCall.bind(this, 'name Vergil')}>Click Me</button>
+        <button onClick={this.personStatusToggle}>Person Toggle</button>
+        
+        {conText}
+        { this.state.personStatus === true ?
+          <div>
+            <Person name="Palash" click={() => this.swithCall('name Vergil')} />
+            <Person name="Palash" change={this.nameChange}>This is Child </Person>
+            <h1>State Test</h1>
+            <h5>My {this.state.person[0].name} and age {this.state.person[0].age}</h5>
+            <h5>My {this.state.person[1].name} and age {this.state.person[1].age}</h5>
+            <h1>Event Test</h1>
+            <button onClick={this.swithCall.bind(this, 'name Vergil')}>Click Me</button>
+          </div> : null
+        }
       </div>
     );
     // var childEl = React.createElement('h1', null, 'Does this Working?');
