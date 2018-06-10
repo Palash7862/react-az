@@ -11,7 +11,13 @@ class App extends Component {
   }
 
   swithCall = () => {
-    alert('You are clickrd.');
+    //alert('You are clickrd.');
+    this.setState({
+      person: [
+        {name: 'name Vergil', age: 25}, 
+        {name: 'name Dante', age: 27} 
+      ]
+    });
   }
 
 
