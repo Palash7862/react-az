@@ -1,21 +1,31 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
   state = {
     person: [
-      {name: 'Nikname 1', age: 22}, 
-      {name: 'Nikname 2', age: 23} 
+      { name: 'Nikname 1', age: 22 },
+      { name: 'Nikname 2', age: 23 }
     ]
   }
 
-  swithCall = () => {
+  swithCall = (name) => {
     //alert('You are clickrd.');
     this.setState({
       person: [
-        {name: 'name Vergil', age: 25}, 
-        {name: 'name Dante', age: 27} 
+        { name: name, age: 25 },
+        { name: 'name Dante', age: 27 }
+      ]
+    });
+  }
+
+  nameChange = (event) => {
+    //alert('You are clickrd.');
+    this.setState({
+      person: [
+        { name: event.target.value, age: 25 },
+        { name: 'Nikname 2', age: 27 }
       ]
     });
   }
@@ -25,13 +35,13 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Does this Working?</h1>
-        <Person name="Palash"/>
-        <Person name="Palash">This is Child </Person>
+        <Person name="Palash" click={() => this.swithCall('name Vergil')} />
+        <Person name="Palash" change={this.nameChange}>This is Child </Person>
         <h1>State Test</h1>
         <h5>My {this.state.person[0].name} and age {this.state.person[0].age}</h5>
         <h5>My {this.state.person[1].name} and age {this.state.person[1].age}</h5>
         <h1>Event Test</h1>
-        <button onClick={this.swithCall}>Click Me</button>
+        <button onClick={this.swithCall.bind(this, 'name Vergil')}>Click Me</button>
       </div>
     );
     // var childEl = React.createElement('h1', null, 'Does this Working?');
