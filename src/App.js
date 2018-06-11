@@ -41,6 +41,13 @@ class App extends Component {
 
   render() {
     let conText = null;
+    let listDisplay = null;
+    listDisplay = (
+      this.state.person.map( person => {
+          return <li>Name : {person.name} , Age : {person.age}</li>
+      } 
+      )
+    )
     if(this.state.personStatus){
       conText = ( <h4>Condetion Text</h4> )
     }
@@ -61,6 +68,10 @@ class App extends Component {
             <button onClick={this.swithCall.bind(this, 'name Vergil')}>Click Me</button>
           </div> : null
         }
+        <h1>List Test</h1>
+        <ul>
+          {listDisplay}
+        </ul>
       </div>
     );
     // var childEl = React.createElement('h1', null, 'Does this Working?');
