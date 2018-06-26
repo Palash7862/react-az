@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+
 import './App.css';
 import Person from './Person/Person';
+import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
     person: [
-      { name: 'Nikname 1', age: 22 },
-      { name: 'Nikname 2', age: 23 }
+      { id: 'kjdhkj', name: 'Nikname 1', age: 22 },
+      { id: 'jkchc', name: 'Nikname 2', age: 23 }
     ],
     personStatus: false
   }
@@ -43,18 +45,38 @@ class App extends Component {
     let conText = null;
     let listDisplay = null;
     listDisplay = (
-      this.state.person.map( person => {
-          return <li>Name : {person.name} , Age : {person.age}</li>
-      } 
-      )
+      this.state.person.map( (person, index) => {
+        return <li key={index}>Name : {person.name} , Age : {person.age}</li>
+    })
     )
-    if(this.state.personStatus){
+    if(this.state.personStatus){ 
       conText = ( <h4>Condetion Text</h4> )
     }
-    return (
+
+    const style = {
+      backgroundColor: '#ddd',
+      border: 'none',
+      padding: '15px 30px',
+      fontWeight: 'bold',
+      fontSize: '16px',
+      transition: 'all 300ms linear 0s',
+      ':hover':{
+        boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2)',
+        transition: 'all 300ms linear 0s'
+      },
+      ':focus': {
+          outline: 'none'
+      }, 
+      '@media (max-width: 500px)': {
+          width: '100%'
+      }
+    } 
+
+    return ( 
       <div className="App">
+      <StyleRoot>
         <h1>Does this Working?</h1>
-        <button onClick={this.personStatusToggle}>Person Toggle</button>
+        <button style={style} onClick={this.personStatusToggle}>Person Toggle</button>
         
         {conText}
         { this.state.personStatus === true ?
@@ -72,11 +94,12 @@ class App extends Component {
         <ul>
           {listDisplay}
         </ul>
-      </div>
+        </StyleRoot>
+      </div> 
     );
     // var childEl = React.createElement('h1', null, 'Does this Working?');
     // return React.createElement('div', {className: 'App'}, childEl);
   }
 }
 
-export default App;
+export default Radium(App);
