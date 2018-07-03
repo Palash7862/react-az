@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 import Radium, { StyleRoot } from 'radium';
 
@@ -73,7 +73,7 @@ class App extends Component {
     } 
 
     return ( 
-      <div className="App">
+      <div className={classes.App}>
       <StyleRoot>
         <h1>Does this Working?</h1>
         <button style={style} onClick={this.personStatusToggle}>Person Toggle</button>
@@ -82,7 +82,7 @@ class App extends Component {
         { this.state.personStatus === true ?
           <div>
             <Person name="Palash" click={() => this.swithCall('name Vergil')} />
-            <Person name="Palash" change={this.nameChange}>This is Child </Person>
+            <Person name="Palashk" change={this.nameChange}>This is Child </Person>
             <h1>State Test</h1>
             <h5>My {this.state.person[0].name} and age {this.state.person[0].age}</h5>
             <h5>My {this.state.person[1].name} and age {this.state.person[1].age}</h5>
@@ -91,7 +91,7 @@ class App extends Component {
           </div> : null
         }
         <h1>List Test</h1>
-        <ul>
+        <ul className={classes.ulstyle}>
           {listDisplay}
         </ul>
         </StyleRoot>
