@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import classes from './App.css';
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons';
+import Person from '../components/Persons/Person/Person';
+
 import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
@@ -94,6 +96,10 @@ class App extends Component {
         <ul className={classes.ulstyle}>
           {listDisplay}
         </ul>
+        <Persons 
+          person={this.state.person}
+          click={this.swithCall}
+          change={this.nameChange}/>
         </StyleRoot>
       </div> 
     );

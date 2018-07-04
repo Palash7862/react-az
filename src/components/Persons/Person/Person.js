@@ -10,9 +10,9 @@ const person = (props) => {
             :
                 <p>not</p> 
             } 
-            <input type="text" onChange={props.change} value={props.name} />
+            <input type="text" onChange={props.change}  /> 
         </div> 
     );
 };
-
+//value={props.name}
 export default Radium(person);
